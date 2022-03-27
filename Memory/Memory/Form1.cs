@@ -15,6 +15,9 @@ namespace Memory
     {
         int[,] state;
         int points = 0;
+        int clickedCardsCounter = 0;
+        int[,] clickedCards = new int[2, 2] { {-1, -1 }, { -1, -1 } };
+        TableLayoutPanel tab = new TableLayoutPanel();
 
         public Form1()
         {
@@ -36,7 +39,6 @@ namespace Memory
             Form2 game = new Form2();
             game.Width = 1075;
             game.Height = 1000;
-            TableLayoutPanel tab = new TableLayoutPanel();
             tab.RowCount = 8;
             tab.ColumnCount = 10;
             tab.Width = 1075;
@@ -56,7 +58,43 @@ namespace Memory
         {
             Button button = sender as Button;
             string path = Environment.CurrentDirectory;
-            button.Image = Image.FromFile(path+"\\images\\image (5).png");
+            int i = tab.GetRow((Control)sender);
+            int j = tab.GetColumn((Control)sender);
+    
+            button.Image = Image.FromFile(path + "\\images\\image (" + state[i, j].ToString() + ").png");
+            clickedCardsCounter++;
+            if(clickedCardsCounter == 1)
+            {
+                clickedCards[0, 0] = i;
+                clickedCards[0, 1] = j;
+            }
+            else if(clickedCardsCounter == 2)
+            {
+                clickedCards[1, 0] = i;
+                clickedCards[1, 1] = j;
+
+                if (checkPair(clickedCards[0, 0], clickedCards[0, 1], clickedCards[1, 0], clickedCards[1, 1]))
+                {
+                    addPoints();
+                    tab.Controls.Remove(tab.GetControlFromPosition(clickedCards[0, 1], clickedCards[0, 0]));
+                    tab.Controls.Remove(tab.GetControlFromPosition(clickedCards[1, 1], clickedCards[1, 0]));
+                }
+                else
+                {
+                    ((Button)tab.GetControlFromPosition(clickedCards[0, 1], clickedCards[0, 0])).Image =
+                        Image.FromFile(path + "\\images\\sky.jpg");
+
+                    ((Button)tab.GetControlFromPosition(clickedCards[1, 1], clickedCards[1, 0])).Image =
+                         Image.FromFile(path + "\\images\\sky.jpg");
+
+                }
+
+                clickedCardsCounter = 0;
+                clickedCards[0, 0] = -1;
+                clickedCards[0, 1] = -1;
+                clickedCards[1, 0] = -1;
+                clickedCards[1, 1] = -1;
+            }
         }
 
         private void hardButtonClick(object sender, EventArgs e)
@@ -88,8 +126,7 @@ namespace Memory
                     button.Height = 100;
                     button.Click += new EventHandler(button_Click);
                     string path = Environment.CurrentDirectory;
-                   // button.Image = Image.FromFile(path + "\\images\\sky.jpg");
-                    button.Image = Image.FromFile(path + "\\images\\image ("+ state[i,j].ToString() +").png");
+                    button.Image = Image.FromFile(path + "\\images\\sky.jpg"); 
                     tab.Controls.Add(button, i, j);
                 }
         }
