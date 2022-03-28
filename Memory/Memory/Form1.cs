@@ -13,13 +13,6 @@ namespace Memory
 {
     public partial class Form1 : Form
     {
-        int[,] state;
-        int points = 0;
-        int animationSpeed = 1000;
-        int clickedCardsCounter = 0;
-        int[,] clickedCards = new int[2, 2] { {-1, -1 }, { -1, -1 } };
-        TableLayoutPanel tab = new TableLayoutPanel();
-
         public Form1()
         {
             InitializeComponent();
@@ -27,28 +20,17 @@ namespace Memory
 
         private void easyButtonClick(object sender, EventArgs e)
         {
-            Form2 game = new Form2();
-            TableLayoutPanel tab = new TableLayoutPanel();
-            tab.RowCount = 6;
-            tab.ColumnCount = 8;
-            
-            game.ShowDialog();
+            Form2 game = new Form2(6,8,100);
         }
 
         private void mediumButtonClick(object sender, EventArgs e)
         {
-            Form2 game = new Form2();
+            Form2 game = new Form2(8,10,75);
         }
-
-
 
         private void hardButtonClick(object sender, EventArgs e)
         {
-            Form2 game = new Form2();
-            TableLayoutPanel tab = new TableLayoutPanel();
-            tab.RowCount = 10;
-            tab.ColumnCount = 12;
-            game.Controls.Add(new Button());
+            Form2 game = new Form2(10,12,50);
         }
 
         private void label1_Click(object sender, EventArgs e)

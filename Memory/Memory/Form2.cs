@@ -18,39 +18,39 @@ namespace Memory
         int clickedCardsCounter = 0;
         int[,] clickedCards = new int[2, 2] { { -1, -1 }, { -1, -1 } };
         TableLayoutPanel tab = new TableLayoutPanel();
-        public Form2()
+        public Form2(int rows, int cols, int cardSize)
         {
             InitializeComponent();
-
-            this.Width = 1075;
-            this.Height = 1000;
-            tab.RowCount = 8;
-            tab.ColumnCount = 10;
-            tab.Width = 1075;
-            tab.Height = 850;
+            
+            this.Width = cols*(cardSize+10);
+            this.Height = rows*(cardSize+10);
+            tab.RowCount = rows;
+            tab.ColumnCount = cols;
+            tab.Width = cols * (cardSize + 10);
+            tab.Height = rows * (cardSize + 10);
 
             //crating random state
-            createRandomState(ref state, tab.RowCount, tab.ColumnCount);
+            createRandomState(ref state, rows, cols);
 
             //creating buttons
-            createButtons(tab, tab.RowCount, tab.ColumnCount);
+            createButtons(tab, rows, cols, cardSize);
 
             this.Controls.Add(tab);
             this.ShowDialog();
         }
 
-        private void createButtons(TableLayoutPanel tab, int rows, int cols)
+        private void createButtons(TableLayoutPanel tab, int rows, int cols, int cardSize)
         {
             for (int i = 0; i < rows; i++)
                 for (int j = 0; j < cols; j++)
                 {
                     Button button = new Button();
-                    button.Width = 100;
-                    button.Height = 100;
+                    button.Width = cardSize;
+                    button.Height = cardSize;
                     button.Click += new EventHandler(button_Click);
                     string path = Environment.CurrentDirectory;
                     button.Image = Image.FromFile(path + "\\images\\sky.jpg");
-                    tab.Controls.Add(button, i, j);
+                    tab.Controls.Add(button, j, i);
                 }
         }
 
