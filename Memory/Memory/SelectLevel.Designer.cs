@@ -1,6 +1,6 @@
 ﻿namespace Memory
 {
-    partial class Form1
+    partial class SelectLevel
     {
         /// <summary>
         /// Required designer variable.
@@ -37,8 +37,8 @@
             // 
             // easyButton
             // 
-            this.easyButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.easyButton.Font = new System.Drawing.Font("MV Boli", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.easyButton.BackColor = Style.getButtonColor();
+            this.easyButton.Font = Style.getButtonFont();
             this.easyButton.Location = new System.Drawing.Point(55, 189);
             this.easyButton.Name = "easyButton";
             this.easyButton.Size = new System.Drawing.Size(344, 91);
@@ -49,8 +49,8 @@
             // 
             // mediumButton
             // 
-            this.mediumButton.BackColor = System.Drawing.SystemColors.Highlight;
-            this.mediumButton.Font = new System.Drawing.Font("MV Boli", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mediumButton.BackColor = Style.getButtonColor();
+            this.mediumButton.Font = Style.getButtonFont();
             this.mediumButton.Location = new System.Drawing.Point(55, 302);
             this.mediumButton.Name = "mediumButton";
             this.mediumButton.Size = new System.Drawing.Size(344, 91);
@@ -61,8 +61,8 @@
             // 
             // hardButton
             // 
-            this.hardButton.BackColor = System.Drawing.SystemColors.Highlight;
-            this.hardButton.Font = new System.Drawing.Font("MV Boli", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hardButton.BackColor = Style.getButtonColor();
+            this.hardButton.Font =  Style.getButtonFont();
             this.hardButton.Location = new System.Drawing.Point(55, 412);
             this.hardButton.Name = "hardButton";
             this.hardButton.Size = new System.Drawing.Size(344, 91);
@@ -93,7 +93,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Info;
+            this.BackColor = Style.getBackgroundColor();
             this.ClientSize = new System.Drawing.Size(457, 544);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.title);

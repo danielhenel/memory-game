@@ -11,26 +11,26 @@ using System.Windows.Forms;
 
 namespace Memory
 {
-    public partial class Form1 : Form
+    public partial class SelectLevel : Form
     {
-        public Form1()
+        public SelectLevel()
         {
             InitializeComponent();
         }
 
         private void easyButtonClick(object sender, EventArgs e)
         {
-            Form2 game = new Form2(6,8,100);
+            Game game = new Game(6,8,100);
         }
 
         private void mediumButtonClick(object sender, EventArgs e)
         {
-            Form2 game = new Form2(8,10,75);
+            Game game = new Game(8,10,75);
         }
 
         private void hardButtonClick(object sender, EventArgs e)
         {
-            Form2 game = new Form2(10,12,50);
+            Game game = new Game(10,12,50);
         }
 
         private void label1_Click(object sender, EventArgs e)

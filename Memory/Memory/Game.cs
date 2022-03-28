@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Memory
 {
-    public partial class Form2 : Form
+    public partial class Game : Form
     {
         int[,] state;
         int points = 0;
@@ -18,7 +18,7 @@ namespace Memory
         int clickedCardsCounter = 0;
         int[,] clickedCards = new int[2, 2] { { -1, -1 }, { -1, -1 } };
         TableLayoutPanel tab = new TableLayoutPanel();
-        public Form2(int rows, int cols, int cardSize)
+        public Game(int rows, int cols, int cardSize)
         {
             InitializeComponent();
             
@@ -84,7 +84,7 @@ namespace Memory
 
         private bool checkPair(int i1, int j1, int i2, int j2)
         {
-            return state[i1, j1] == state[i2, j2] & i1 != i2 & j1 != j2;
+            return state[i1, j1] == state[i2, j2] & (i1 != i2 || j1 != j2);
         }
 
         private void addPoints()
