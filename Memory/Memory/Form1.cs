@@ -63,7 +63,7 @@ namespace Memory
     
             button.Image = Image.FromFile(path + "\\images\\image (" + state[i, j].ToString() + ").png");
             clickedCardsCounter++;
-            if(clickedCardsCounter == 1)
+            if (clickedCardsCounter == 1)
             {
                 clickedCards[0, 0] = i;
                 clickedCards[0, 1] = j;
@@ -81,6 +81,7 @@ namespace Memory
                 }
                 else
                 {
+
                     ((Button)tab.GetControlFromPosition(clickedCards[0, 1], clickedCards[0, 0])).Image =
                         Image.FromFile(path + "\\images\\sky.jpg");
 
@@ -161,7 +162,7 @@ namespace Memory
 
         private bool checkPair(int i1, int j1, int i2, int j2)
         {
-            return state[i1, j1] == state[i2, j2];
+            return state[i1, j1] == state[i2, j2] & i1 != i2 & j1 != j2;
         }
 
         private void addPoints()
