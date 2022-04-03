@@ -29,8 +29,11 @@ namespace Memory
 
         private void nextButtonClick(object sender, EventArgs e)
         {
+            this.Hide();
             SelectLevel selectlevel = new SelectLevel();
-                selectlevel.Show();
+            selectlevel.StartPosition = FormStartPosition.Manual;
+            selectlevel.Location = this.Location;
+            selectlevel.Show();
         }
 
         private void settingsButtonClick(object sender, EventArgs e)
@@ -39,6 +42,11 @@ namespace Memory
         }
 
         private void title_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
         {
 
         }
