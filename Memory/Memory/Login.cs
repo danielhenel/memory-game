@@ -29,16 +29,22 @@ namespace Memory
 
         private void nextButtonClick(object sender, EventArgs e)
         {
-            this.Hide();
+            
             SelectLevel selectlevel = new SelectLevel();
             selectlevel.StartPosition = FormStartPosition.Manual;
             selectlevel.Location = this.Location;
+            this.Hide();
             selectlevel.Show();
+
         }
 
         private void settingsButtonClick(object sender, EventArgs e)
         {
-
+            Settings settingsForm = new Settings(this);
+            settingsForm.StartPosition = FormStartPosition.Manual;
+            settingsForm.Location = this.Location;
+            settingsForm.Show();
+            this.Hide();
         }
 
         private void title_Click(object sender, EventArgs e)
