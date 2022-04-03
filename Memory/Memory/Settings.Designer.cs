@@ -36,15 +36,17 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.languageBox = new System.Windows.Forms.ComboBox();
             this.animationSpeedBox = new System.Windows.Forms.TextBox();
-            this.upButton = new System.Windows.Forms.Button();
-            this.downButton = new System.Windows.Forms.Button();
+            this.animationUp = new System.Windows.Forms.Button();
+            this.animationDown = new System.Windows.Forms.Button();
             this.soundBox = new System.Windows.Forms.ComboBox();
             this.presentationLabel = new System.Windows.Forms.Label();
             this.presentationTimeBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.presentationUp = new System.Windows.Forms.Button();
+            this.presentationDown = new System.Windows.Forms.Button();
             this.cardSizeLabel = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -122,24 +124,25 @@
             this.animationSpeedBox.TabIndex = 11;
             this.animationSpeedBox.Text = "2";
             // 
-            // upButton
+            // animationUp
             // 
-            this.upButton.Location = new System.Drawing.Point(189, 107);
-            this.upButton.Name = "upButton";
-            this.upButton.Size = new System.Drawing.Size(48, 23);
-            this.upButton.TabIndex = 12;
-            this.upButton.Text = "↑";
-            this.upButton.UseVisualStyleBackColor = true;
-            this.upButton.Click += new System.EventHandler(this.button1_Click);
+            this.animationUp.Location = new System.Drawing.Point(189, 107);
+            this.animationUp.Name = "animationUp";
+            this.animationUp.Size = new System.Drawing.Size(48, 23);
+            this.animationUp.TabIndex = 12;
+            this.animationUp.Text = "↑";
+            this.animationUp.UseVisualStyleBackColor = true;
+            this.animationUp.Click += new System.EventHandler(this.animationUp_Click);
             // 
-            // downButton
+            // animationDown
             // 
-            this.downButton.Location = new System.Drawing.Point(255, 107);
-            this.downButton.Name = "downButton";
-            this.downButton.Size = new System.Drawing.Size(40, 23);
-            this.downButton.TabIndex = 13;
-            this.downButton.Text = "↓";
-            this.downButton.UseVisualStyleBackColor = true;
+            this.animationDown.Location = new System.Drawing.Point(255, 107);
+            this.animationDown.Name = "animationDown";
+            this.animationDown.Size = new System.Drawing.Size(40, 23);
+            this.animationDown.TabIndex = 13;
+            this.animationDown.Text = "↓";
+            this.animationDown.UseVisualStyleBackColor = true;
+            this.animationDown.Click += new System.EventHandler(this.animationDown_Click);
             // 
             // soundBox
             // 
@@ -172,23 +175,25 @@
             this.presentationTimeBox.Text = "120";
             this.presentationTimeBox.TextChanged += new System.EventHandler(this.presentationTimeBox_TextChanged);
             // 
-            // button1
+            // presentationUp
             // 
-            this.button1.Location = new System.Drawing.Point(189, 240);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(48, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "↑";
-            this.button1.UseVisualStyleBackColor = true;
+            this.presentationUp.Location = new System.Drawing.Point(189, 240);
+            this.presentationUp.Name = "presentationUp";
+            this.presentationUp.Size = new System.Drawing.Size(48, 23);
+            this.presentationUp.TabIndex = 17;
+            this.presentationUp.Text = "↑";
+            this.presentationUp.UseVisualStyleBackColor = true;
+            this.presentationUp.Click += new System.EventHandler(this.presentationUp_Click);
             // 
-            // button2
+            // presentationDown
             // 
-            this.button2.Location = new System.Drawing.Point(255, 238);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(40, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "↓";
-            this.button2.UseVisualStyleBackColor = true;
+            this.presentationDown.Location = new System.Drawing.Point(255, 238);
+            this.presentationDown.Name = "presentationDown";
+            this.presentationDown.Size = new System.Drawing.Size(40, 23);
+            this.presentationDown.TabIndex = 18;
+            this.presentationDown.Text = "↓";
+            this.presentationDown.UseVisualStyleBackColor = true;
+            this.presentationDown.Click += new System.EventHandler(this.presentationDown_Click);
             // 
             // cardSizeLabel
             // 
@@ -212,21 +217,45 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 20;
             // 
+            // cancelButton
+            // 
+            this.cancelButton.Font = new System.Drawing.Font("MV Boli", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.Location = new System.Drawing.Point(31, 454);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(95, 35);
+            this.cancelButton.TabIndex = 21;
+            this.cancelButton.Text = "cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Font = new System.Drawing.Font("MV Boli", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton.Location = new System.Drawing.Point(317, 454);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(101, 35);
+            this.saveButton.TabIndex = 22;
+            this.saveButton.Text = "save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(457, 544);
+            this.Controls.Add(this.saveButton);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.cardSizeLabel);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.presentationDown);
+            this.Controls.Add(this.presentationUp);
             this.Controls.Add(this.presentationTimeBox);
             this.Controls.Add(this.presentationLabel);
             this.Controls.Add(this.soundBox);
-            this.Controls.Add(this.downButton);
-            this.Controls.Add(this.upButton);
+            this.Controls.Add(this.animationDown);
+            this.Controls.Add(this.animationUp);
             this.Controls.Add(this.animationSpeedBox);
             this.Controls.Add(this.languageBox);
             this.Controls.Add(this.soundLabel);
@@ -252,14 +281,16 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ComboBox languageBox;
         private System.Windows.Forms.TextBox animationSpeedBox;
-        private System.Windows.Forms.Button upButton;
-        private System.Windows.Forms.Button downButton;
+        private System.Windows.Forms.Button animationUp;
+        private System.Windows.Forms.Button animationDown;
         private System.Windows.Forms.ComboBox soundBox;
         private System.Windows.Forms.Label presentationLabel;
         private System.Windows.Forms.TextBox presentationTimeBox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button presentationUp;
+        private System.Windows.Forms.Button presentationDown;
         private System.Windows.Forms.Label cardSizeLabel;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button saveButton;
     }
 }
