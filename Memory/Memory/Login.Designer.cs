@@ -2,6 +2,7 @@
 {
     partial class Login
     {
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -28,11 +29,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.title = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.nextButton = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.settingsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // title
@@ -44,6 +47,7 @@
             this.title.Size = new System.Drawing.Size(275, 49);
             this.title.TabIndex = 3;
             this.title.Text = "memory game";
+            this.title.Click += new System.EventHandler(this.title_Click);
             // 
             // label1
             // 
@@ -63,7 +67,7 @@
             this.nextButton.TabIndex = 5;
             this.nextButton.Text = "next";
             this.nextButton.UseVisualStyleBackColor = false;
-            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            this.nextButton.Click += new System.EventHandler(this.nextButtonClick);
             // 
             // textBox2
             // 
@@ -82,12 +86,26 @@
             this.nameLabel.Text = "name";
             this.nameLabel.Click += new System.EventHandler(this.label3_Click);
             // 
+            // settingsButton
+            // 
+            this.settingsButton.BackColor = System.Drawing.Color.Transparent;
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
+            this.settingsButton.Location = new System.Drawing.Point(385, 468);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(0);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(50, 50);
+            this.settingsButton.TabIndex = 8;
+            this.settingsButton.UseVisualStyleBackColor = false;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButtonClick);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(457, 544);
+            this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.nextButton);
@@ -119,5 +137,6 @@
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Button settingsButton;
     }
 }

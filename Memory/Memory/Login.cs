@@ -27,10 +27,20 @@ namespace Memory
 
         }
 
-        private void nextButton_Click(object sender, EventArgs e)
+        private void nextButtonClick(object sender, EventArgs e)
         {
             SelectLevel selectlevel = new SelectLevel();
                 selectlevel.Show();
+        }
+
+        private void settingsButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void title_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
