@@ -32,11 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.panelForCards = new System.Windows.Forms.Panel();
             this.ToolBarPanel = new System.Windows.Forms.Panel();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.score = new System.Windows.Forms.Label();
+            this.timeLabel = new System.Windows.Forms.Label();
             this.settingsButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
-            this.timeLabel = new System.Windows.Forms.Label();
-            this.score = new System.Windows.Forms.Label();
             this.ToolBarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +59,7 @@
             this.ToolBarPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ToolBarPanel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.ToolBarPanel.Controls.Add(this.exitButton);
             this.ToolBarPanel.Controls.Add(this.score);
             this.ToolBarPanel.Controls.Add(this.timeLabel);
             this.ToolBarPanel.Controls.Add(this.settingsButton);
@@ -65,6 +67,36 @@
             this.ToolBarPanel.Name = "ToolBarPanel";
             this.ToolBarPanel.Size = new System.Drawing.Size(150, 500);
             this.ToolBarPanel.TabIndex = 1;
+            // 
+            // exitButton
+            // 
+            this.exitButton.BackColor = System.Drawing.Color.White;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
+            this.exitButton.Location = new System.Drawing.Point(37, 441);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(0);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(50, 50);
+            this.exitButton.TabIndex = 11;
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // score
+            // 
+            this.score.Location = new System.Drawing.Point(64, 166);
+            this.score.Name = "score";
+            this.score.Size = new System.Drawing.Size(35, 13);
+            this.score.TabIndex = 0;
+            this.score.Text = "0";
+            // 
+            // timeLabel
+            // 
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Location = new System.Drawing.Point(61, 32);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(26, 13);
+            this.timeLabel.TabIndex = 10;
+            this.timeLabel.Text = "time";
             // 
             // settingsButton
             // 
@@ -83,23 +115,6 @@
             // 
             this.gameTimer.Interval = 1000;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
-            // 
-            // timeLabel
-            // 
-            this.timeLabel.AutoSize = true;
-            this.timeLabel.Location = new System.Drawing.Point(61, 32);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(26, 13);
-            this.timeLabel.TabIndex = 10;
-            this.timeLabel.Text = "time";
-            // 
-            // score
-            // 
-            this.score.Location = new System.Drawing.Point(64, 166);
-            this.score.Name = "score";
-            this.score.Size = new System.Drawing.Size(35, 13);
-            this.score.TabIndex = 0;
-            this.score.Text = "0";
             // 
             // Game
             // 
@@ -128,5 +143,6 @@
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Label score;
+        private System.Windows.Forms.Button exitButton;
     }
 }

@@ -81,6 +81,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -119,6 +120,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\images\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images\exit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
