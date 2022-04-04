@@ -20,17 +20,20 @@ namespace Memory
 
         private void easyButtonClick(object sender, EventArgs e)
         {
-            Game game = new Game(6,8,100);
+            Settings.setCardsSizeValue("LARGE");
+            Game game = new Game(6,8,Settings.getCardsSize()); //default cards size
         }
 
         private void mediumButtonClick(object sender, EventArgs e)
         {
-            Game game = new Game(8,10,75);
+            Settings.setCardsSizeValue("MEDIUM");
+            Game game = new Game(8,10, Settings.getCardsSize()); //default cards size
         }
 
         private void hardButtonClick(object sender, EventArgs e)
         {
-            Game game = new Game(10,12,50);
+            Settings.setCardsSizeValue("SMALL");
+            Game game = new Game(10,12, Settings.getCardsSize()); //default cards size
         }
 
         private void label1_Click(object sender, EventArgs e)
