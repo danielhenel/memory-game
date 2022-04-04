@@ -44,7 +44,7 @@
             this.presentationUp = new System.Windows.Forms.Button();
             this.presentationDown = new System.Windows.Forms.Button();
             this.cardSizeLabel = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cardSizeBox = new System.Windows.Forms.ComboBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -209,17 +209,17 @@
             this.cardSizeLabel.Text = "card size";
             this.cardSizeLabel.Click += new System.EventHandler(this.cardSizeLabel_Click);
             // 
-            // comboBox1
+            // cardSizeBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cardSizeBox.FormattingEnabled = true;
+            this.cardSizeBox.Items.AddRange(new object[] {
             "small",
             "medium",
             "large"});
-            this.comboBox1.Location = new System.Drawing.Point(34, 176);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 20;
+            this.cardSizeBox.Location = new System.Drawing.Point(34, 176);
+            this.cardSizeBox.Name = "cardSizeBox";
+            this.cardSizeBox.Size = new System.Drawing.Size(121, 21);
+            this.cardSizeBox.TabIndex = 20;
             // 
             // cancelButton
             // 
@@ -251,7 +251,7 @@
             this.ClientSize = new System.Drawing.Size(457, 544);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cardSizeBox);
             this.Controls.Add(this.cardSizeLabel);
             this.Controls.Add(this.presentationDown);
             this.Controls.Add(this.presentationUp);
@@ -293,7 +293,7 @@
         private System.Windows.Forms.Button presentationUp;
         private System.Windows.Forms.Button presentationDown;
         private System.Windows.Forms.Label cardSizeLabel;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cardSizeBox;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button saveButton;
     }

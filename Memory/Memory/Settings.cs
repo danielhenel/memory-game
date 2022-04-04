@@ -85,15 +85,19 @@ namespace Memory
             parent.Location = this.Location;
             parent.Show();
             this.Hide();
-            
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            languageValue = this.languageBox.Text;
+            animationSpeedValue = Int32.Parse(this.animationSpeedBox.Text);
+            presentationTimeValue = Int32.Parse(this.presentationTimeBox.Text);
+            cardsSizeValue = this.cardSizeBox.Text;
+            soundValue = this.soundBox.Text;
             parent.Show();
             this.Hide();
-            
         }
+
 
         private void animationUp_Click(object sender, EventArgs e)
         {
