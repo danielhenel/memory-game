@@ -131,11 +131,6 @@ namespace Memory
             return state[i1, j1] == state[i2, j2] & (i1 != i2 || j1 != j2);
         }
 
-        private void addPoints()
-        {
-            points += 5;
-        }
-
         protected async void button_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
@@ -158,7 +153,7 @@ namespace Memory
 
                 if (checkPair(clickedCards[0, 0], clickedCards[0, 1], clickedCards[1, 0], clickedCards[1, 1]))
                 {
-                    addPoints();
+                    updatePointsCount();
                     cardsTable.GetControlFromPosition(clickedCards[0, 1], clickedCards[0, 0]).Visible = false;
                     cardsTable.GetControlFromPosition(clickedCards[1, 1], clickedCards[1, 0]).Visible = false;
                 }
@@ -247,6 +242,21 @@ namespace Memory
         private void showGameTime()
         {
             this.timeLabel.Text = ticks.ToString();
+        }
+
+        private void updatePointsCount()
+        {
+            //for each pair +5 points
+            points += 5;
+
+            //additional points for short game time
+            int temp = ticks/10;
+            int bonus = 6 - temp;
+            if(bonus > 0)
+            points += bonus;
+
+            //show points
+            this.score.Text = points.ToString();
         }
 
         private void panelForCards_Paint(object sender, PaintEventArgs e)

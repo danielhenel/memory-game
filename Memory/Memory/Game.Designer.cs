@@ -36,6 +36,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.timeLabel = new System.Windows.Forms.Label();
+            this.score = new System.Windows.Forms.Label();
             this.ToolBarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +58,7 @@
             this.ToolBarPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ToolBarPanel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.ToolBarPanel.Controls.Add(this.score);
             this.ToolBarPanel.Controls.Add(this.timeLabel);
             this.ToolBarPanel.Controls.Add(this.settingsButton);
             this.ToolBarPanel.Location = new System.Drawing.Point(750, 0);
@@ -91,6 +93,14 @@
             this.timeLabel.TabIndex = 10;
             this.timeLabel.Text = "time";
             // 
+            // score
+            // 
+            this.score.Location = new System.Drawing.Point(64, 166);
+            this.score.Name = "score";
+            this.score.Size = new System.Drawing.Size(35, 13);
+            this.score.TabIndex = 0;
+            this.score.Text = "0";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -117,5 +127,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Label score;
     }
 }
