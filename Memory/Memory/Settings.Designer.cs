@@ -60,17 +60,18 @@
             // languageLabel
             // 
             this.languageLabel.AutoSize = true;
-            this.languageLabel.Location = new System.Drawing.Point(28, 39);
+            this.languageLabel.Location = new System.Drawing.Point(31, 229);
             this.languageLabel.Name = "languageLabel";
             this.languageLabel.Size = new System.Drawing.Size(51, 13);
             this.languageLabel.TabIndex = 5;
             this.languageLabel.Text = "language";
+            this.languageLabel.Visible = false;
             this.languageLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // animationSpeed
             // 
             this.animationSpeed.AutoSize = true;
-            this.animationSpeed.Location = new System.Drawing.Point(28, 90);
+            this.animationSpeed.Location = new System.Drawing.Point(28, 47);
             this.animationSpeed.Name = "animationSpeed";
             this.animationSpeed.Size = new System.Drawing.Size(98, 13);
             this.animationSpeed.TabIndex = 6;
@@ -88,11 +89,12 @@
             // soundLabel
             // 
             this.soundLabel.AutoSize = true;
-            this.soundLabel.Location = new System.Drawing.Point(28, 154);
+            this.soundLabel.Location = new System.Drawing.Point(31, 285);
             this.soundLabel.Name = "soundLabel";
             this.soundLabel.Size = new System.Drawing.Size(36, 13);
             this.soundLabel.TabIndex = 8;
             this.soundLabel.Text = "sound";
+            this.soundLabel.Visible = false;
             this.soundLabel.Click += new System.EventHandler(this.label3_Click);
             // 
             // menuStrip1
@@ -110,15 +112,16 @@
             "English",
             "Polish",
             "German"});
-            this.languageBox.Location = new System.Drawing.Point(31, 55);
+            this.languageBox.Location = new System.Drawing.Point(34, 245);
             this.languageBox.Name = "languageBox";
             this.languageBox.Size = new System.Drawing.Size(121, 21);
             this.languageBox.TabIndex = 10;
+            this.languageBox.Visible = false;
             this.languageBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // animationSpeedBox
             // 
-            this.animationSpeedBox.Location = new System.Drawing.Point(31, 107);
+            this.animationSpeedBox.Location = new System.Drawing.Point(31, 63);
             this.animationSpeedBox.Name = "animationSpeedBox";
             this.animationSpeedBox.Size = new System.Drawing.Size(121, 20);
             this.animationSpeedBox.TabIndex = 11;
@@ -126,7 +129,7 @@
             // 
             // animationUp
             // 
-            this.animationUp.Location = new System.Drawing.Point(189, 107);
+            this.animationUp.Location = new System.Drawing.Point(189, 63);
             this.animationUp.Name = "animationUp";
             this.animationUp.Size = new System.Drawing.Size(48, 23);
             this.animationUp.TabIndex = 12;
@@ -136,7 +139,7 @@
             // 
             // animationDown
             // 
-            this.animationDown.Location = new System.Drawing.Point(255, 107);
+            this.animationDown.Location = new System.Drawing.Point(255, 63);
             this.animationDown.Name = "animationDown";
             this.animationDown.Size = new System.Drawing.Size(40, 23);
             this.animationDown.TabIndex = 13;
@@ -150,16 +153,17 @@
             this.soundBox.Items.AddRange(new object[] {
             "On",
             "Off"});
-            this.soundBox.Location = new System.Drawing.Point(31, 170);
+            this.soundBox.Location = new System.Drawing.Point(34, 301);
             this.soundBox.Name = "soundBox";
             this.soundBox.Size = new System.Drawing.Size(121, 21);
             this.soundBox.TabIndex = 14;
+            this.soundBox.Visible = false;
             this.soundBox.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // presentationLabel
             // 
             this.presentationLabel.AutoSize = true;
-            this.presentationLabel.Location = new System.Drawing.Point(31, 224);
+            this.presentationLabel.Location = new System.Drawing.Point(31, 103);
             this.presentationLabel.Name = "presentationLabel";
             this.presentationLabel.Size = new System.Drawing.Size(101, 13);
             this.presentationLabel.TabIndex = 15;
@@ -168,7 +172,7 @@
             // 
             // presentationTimeBox
             // 
-            this.presentationTimeBox.Location = new System.Drawing.Point(31, 240);
+            this.presentationTimeBox.Location = new System.Drawing.Point(31, 119);
             this.presentationTimeBox.Name = "presentationTimeBox";
             this.presentationTimeBox.Size = new System.Drawing.Size(121, 20);
             this.presentationTimeBox.TabIndex = 16;
@@ -177,7 +181,7 @@
             // 
             // presentationUp
             // 
-            this.presentationUp.Location = new System.Drawing.Point(189, 240);
+            this.presentationUp.Location = new System.Drawing.Point(189, 119);
             this.presentationUp.Name = "presentationUp";
             this.presentationUp.Size = new System.Drawing.Size(48, 23);
             this.presentationUp.TabIndex = 17;
@@ -187,7 +191,7 @@
             // 
             // presentationDown
             // 
-            this.presentationDown.Location = new System.Drawing.Point(255, 238);
+            this.presentationDown.Location = new System.Drawing.Point(255, 119);
             this.presentationDown.Name = "presentationDown";
             this.presentationDown.Size = new System.Drawing.Size(40, 23);
             this.presentationDown.TabIndex = 18;
@@ -198,7 +202,7 @@
             // cardSizeLabel
             // 
             this.cardSizeLabel.AutoSize = true;
-            this.cardSizeLabel.Location = new System.Drawing.Point(28, 299);
+            this.cardSizeLabel.Location = new System.Drawing.Point(31, 160);
             this.cardSizeLabel.Name = "cardSizeLabel";
             this.cardSizeLabel.Size = new System.Drawing.Size(49, 13);
             this.cardSizeLabel.TabIndex = 19;
@@ -212,7 +216,7 @@
             "small",
             "medium",
             "large"});
-            this.comboBox1.Location = new System.Drawing.Point(31, 316);
+            this.comboBox1.Location = new System.Drawing.Point(34, 176);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 20;

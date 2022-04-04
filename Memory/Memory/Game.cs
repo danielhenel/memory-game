@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Memory
 {
@@ -15,34 +16,70 @@ namespace Memory
         int[,] state;
         int points = 0;
         int animationSpeed = 1000;
+        TableLayoutPanel cardsTable;
         int clickedCardsCounter = 0;
         int[,] clickedCards = new int[2, 2] { { -1, -1 }, { -1, -1 } };
-        TableLayoutPanel tab = new TableLayoutPanel();
+        int numberOfRows;
+        int numberOfColumns;
+        int cardSize;
         public Game(int rows, int cols, int cardSize)
         {
             InitializeComponent();
-            
+
+            numberOfRows = rows;
+            numberOfColumns = cols;
+
+            createTable();
+
+                
+            //this.cardSize = cardSize;
+            /*
             this.Width = cols*(cardSize+10);
             this.Height = rows*(cardSize+10);
-            tab.RowCount = rows;
-            tab.ColumnCount = cols;
-            tab.Width = cols * (cardSize + 10);
-            tab.Height = rows * (cardSize + 10);
-
+            cardsTable.RowCount = rows;
+            cardsTable.ColumnCount = cols;
+            cardsTable.Width = cols * (cardSize + 10);
+            cardsTable.Height = rows * (cardSize + 10);
+           // cardSize = tab.Width / tab.ColumnCount;
+            */
             //crating random state
-            createRandomState(ref state, rows, cols);
+            createRandomState();
 
             //creating buttons
-            createButtons(tab, rows, cols, cardSize);
+            createButtons();
 
-            this.Controls.Add(tab);
+            Console.WriteLine(this.cardsTable.RowCount);
             this.ShowDialog();
         }
 
-        private void createButtons(TableLayoutPanel tab, int rows, int cols, int cardSize)
+        private void createTable()
         {
-            for (int i = 0; i < rows; i++)
-                for (int j = 0; j < cols; j++)
+            cardsTable = new TableLayoutPanel();
+            this.cardsTable.RowCount = numberOfRows;
+            this.cardsTable.ColumnCount = numberOfColumns;
+
+            for (int i = 0; i < numberOfColumns; i++)
+                this.cardsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100/numberOfColumns));
+            for (int i = 0; i < numberOfRows; i++)
+                this.cardsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100/numberOfRows));
+
+            this.cardsTable.Width = this.panelForCards.Width - 100;
+            this.cardsTable.Height = this.panelForCards.Height - 50;
+            panelForCards.Controls.Add(cardsTable);
+            this.cardsTable.Location = new Point(this.cardsTable.Parent.Width / 2 - this.cardsTable.Width / 2, this.cardsTable.Parent.Height / 2 - this.cardsTable.Height / 2);
+            int shorterEdge;
+            if (this.cardsTable.Width < this.cardsTable.Height)
+                shorterEdge = this.cardsTable.Width / this.cardsTable.ColumnCount;
+            else shorterEdge = this.cardsTable.Height / this.cardsTable.RowCount;
+            cardSize = shorterEdge;
+        }
+
+        private void createButtons()
+        {
+
+            for (int i = 0; i < numberOfRows; i++)
+            {
+                for (int j = 0; j < numberOfColumns; j++)
                 {
                     Button button = new Button();
                     button.Width = cardSize;
@@ -50,16 +87,19 @@ namespace Memory
                     button.Click += new EventHandler(button_Click);
                     string path = Environment.CurrentDirectory;
                     button.Image = Image.FromFile(path + "\\images\\sky.jpg");
-                    tab.Controls.Add(button, j, i);
+                    this.cardsTable.Controls.Add(button, j, i);
                 }
+            }
         }
 
-        private void createRandomState(ref int[,] array, int rows, int cols)
+        private void createRandomState()
         {
-            array = new int[rows, cols];
+            int rows = numberOfRows;
+            int cols = numberOfColumns;
+            state = new int[rows, cols];
             for (int i = 0; i < rows; i++)
                 for (int j = 0; j < cols; j++)
-                    array[i, j] = i * cols + j + 1 - j % 2;
+                    state[i, j] = i * cols + j + 1 - j % 2;
 
             //Knuth shuffle
             Random random = new Random();
@@ -72,10 +112,9 @@ namespace Memory
                 {
                     int i = random.Next(rows + 1);
                     int j = random.Next(cols + 1);
-
-                    int temp = array[i, j];
-                    array[i, j] = array[rows, cols];
-                    array[rows, cols] = temp;
+                    int temp = state[i, j];
+                    state[i, j] = state[rows, cols];
+                    state[rows, cols] = temp;
                     cols--;
                 }
                 cols = x;
@@ -96,8 +135,8 @@ namespace Memory
         {
             Button button = sender as Button;
             string path = Environment.CurrentDirectory;
-            int i = tab.GetRow((Control)sender);
-            int j = tab.GetColumn((Control)sender);
+            int i = cardsTable.GetRow((Control)sender);
+            int j = cardsTable.GetColumn((Control)sender);
 
             button.Image = Image.FromFile(path + "\\images\\image (" + state[i, j].ToString() + ").png");
             await Task.Delay(animationSpeed);
@@ -115,16 +154,16 @@ namespace Memory
                 if (checkPair(clickedCards[0, 0], clickedCards[0, 1], clickedCards[1, 0], clickedCards[1, 1]))
                 {
                     addPoints();
-                    tab.Controls.Remove(tab.GetControlFromPosition(clickedCards[0, 1], clickedCards[0, 0]));
-                    tab.Controls.Remove(tab.GetControlFromPosition(clickedCards[1, 1], clickedCards[1, 0]));
+                    cardsTable.GetControlFromPosition(clickedCards[0, 1], clickedCards[0, 0]).Visible = false;
+                    cardsTable.GetControlFromPosition(clickedCards[1, 1], clickedCards[1, 0]).Visible=false;
                 }
                 else
                 {
 
-                    ((Button)tab.GetControlFromPosition(clickedCards[0, 1], clickedCards[0, 0])).Image =
+                    ((Button)cardsTable.GetControlFromPosition(clickedCards[0, 1], clickedCards[0, 0])).Image =
                         Image.FromFile(path + "\\images\\sky.jpg");
 
-                    ((Button)tab.GetControlFromPosition(clickedCards[1, 1], clickedCards[1, 0])).Image =
+                    ((Button)cardsTable.GetControlFromPosition(clickedCards[1, 1], clickedCards[1, 0])).Image =
                          Image.FromFile(path + "\\images\\sky.jpg");
 
                 }
@@ -136,5 +175,47 @@ namespace Memory
                 clickedCards[1, 1] = -1;
             }
         }
+
+        private void Game_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelForCards_Resize(object sender, EventArgs e)
+        {
+            resize();
+        }
+
+        private void resize()
+        {
+            Thread.Sleep(10);
+            this.cardsTable.Width = this.panelForCards.Width - 100;
+            this.cardsTable.Height = this.panelForCards.Height - 50;
+            this.cardsTable.Location = new Point(this.cardsTable.Parent.Width / 2 - this.cardsTable.Width / 2, this.cardsTable.Parent.Height / 2 - this.cardsTable.Height / 2);
+
+
+            //cards resizing
+            int shorterEdge;
+            if (this.cardsTable.Width < this.cardsTable.Height)
+                shorterEdge = this.cardsTable.Width / this.cardsTable.ColumnCount;
+            else shorterEdge = this.cardsTable.Height / this.cardsTable.RowCount;
+            cardSize = shorterEdge;
+
+            this.cardsTable.Visible = false;
+            for(int i = 0; i < this.cardsTable.ColumnCount; i++)
+                for(int j = 0; j < this.cardsTable.RowCount; j++)
+                {
+                    ((Button)cardsTable.GetControlFromPosition(i, j)).Width = cardSize;
+                    ((Button)cardsTable.GetControlFromPosition(i, j)).Height = cardSize;
+                }
+            this.cardsTable.Visible = true;
+        }
+
     }
+
 }
