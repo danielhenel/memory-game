@@ -15,6 +15,7 @@ namespace Memory
     {
         int[,] state;
         int points = 0;
+        private string path = Environment.CurrentDirectory;
         int animationSpeed = 1000;
         TableLayoutPanel cardsTable;
         int clickedCardsCounter = 0;
@@ -22,6 +23,9 @@ namespace Memory
         int numberOfRows;
         int numberOfColumns;
         int cardSize;
+        DateTime launchDate;
+        int ticks = 0;
+        private Boolean presentationMode = true;
         public Game(int rows, int cols, int cardSize)
         {
             InitializeComponent();
@@ -31,24 +35,15 @@ namespace Memory
 
             createTable();
 
-                
-            //this.cardSize = cardSize;
-            /*
-            this.Width = cols*(cardSize+10);
-            this.Height = rows*(cardSize+10);
-            cardsTable.RowCount = rows;
-            cardsTable.ColumnCount = cols;
-            cardsTable.Width = cols * (cardSize + 10);
-            cardsTable.Height = rows * (cardSize + 10);
-           // cardSize = tab.Width / tab.ColumnCount;
-            */
-            //crating random state
             createRandomState();
 
             //creating buttons
             createButtons();
+            //presentation time
 
-            Console.WriteLine(this.cardsTable.RowCount);
+            launchDate = DateTime.Now;
+            this.timeLabel.Text = Settings.getPresentationTimeValue().ToString();   
+            this.gameTimer.Start();
             this.ShowDialog();
         }
 
@@ -85,9 +80,19 @@ namespace Memory
                     button.Width = cardSize;
                     button.Height = cardSize;
                     button.Click += new EventHandler(button_Click);
-                    string path = Environment.CurrentDirectory;
-                    button.Image = Image.FromFile(path + "\\images\\sky.jpg");
+                    button.Image = Image.FromFile(path + "\\images\\image (" + state[i, j].ToString() + ").png");
                     this.cardsTable.Controls.Add(button, j, i);
+                }
+            }
+        }
+
+        private void hideCards()
+        {
+            for (int i = 0; i < numberOfRows; i++)
+            {
+                for (int j = 0; j < numberOfColumns; j++)
+                {
+                    ((Button)cardsTable.GetControlFromPosition(j, i)).Image = Image.FromFile(path + "\\images\\sky.jpg");
                 }
             }
         }
@@ -155,7 +160,7 @@ namespace Memory
                 {
                     addPoints();
                     cardsTable.GetControlFromPosition(clickedCards[0, 1], clickedCards[0, 0]).Visible = false;
-                    cardsTable.GetControlFromPosition(clickedCards[1, 1], clickedCards[1, 0]).Visible=false;
+                    cardsTable.GetControlFromPosition(clickedCards[1, 1], clickedCards[1, 0]).Visible = false;
                 }
                 else
                 {
@@ -177,11 +182,6 @@ namespace Memory
         }
 
         private void Game_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
@@ -216,6 +216,43 @@ namespace Memory
             this.cardsTable.Visible = true;
         }
 
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            Settings settingsForm = new Settings(this);
+            settingsForm.StartPosition = FormStartPosition.Manual;
+            settingsForm.Location = this.Location;
+            settingsForm.Show();
+        }
+
+        private void gameTimer_Tick(object sender, EventArgs e)
+        {
+            ticks++;
+            if (presentationMode) presentation();
+            else showGameTime();
+        }
+
+        private void presentation()
+        {
+            if(Settings.getPresentationTimeValue() - ticks > 0)
+            this.timeLabel.Text = (Settings.getPresentationTimeValue() - ticks).ToString();
+            else
+            {
+                this.timeLabel.Text = "0";
+                presentationMode = false;
+                hideCards();
+                ticks = 0;
+            }
+        }
+
+        private void showGameTime()
+        {
+            this.timeLabel.Text = ticks.ToString();
+        }
+
+        private void panelForCards_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 }
