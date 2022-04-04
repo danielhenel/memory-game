@@ -13,11 +13,16 @@ namespace Memory
     public partial class Settings : Form
     {
         Form parent;
-        static String languageValue;
-        static int animationSpeedValue;
-        static int presentationTimeValue;
-        static String cardsSizeValue;
-        static String soundValue;
+        private static String languageValue;
+        private static int animationSpeedValue = 2; //default 2s
+        private static int presentationTimeValue = 5; //default 120s = 2min
+        private static String cardsSizeValue;
+        private static String soundValue;
+        public enum CardsSizes : int{
+        SMALL = 50,
+        MEDIUM = 75,
+        LARGE = 100
+        }
 
         public Settings(Form parent)
         {
@@ -138,6 +143,64 @@ namespace Memory
                 actuallValue += 5;
                 this.presentationTimeBox.Text = actuallValue.ToString();
             }
+        }
+
+        public static String getLanguageValue()
+        {
+            return languageValue;
+        }
+
+        public static int getAnimationSpeedValue()
+        {
+            return animationSpeedValue;
+        }
+
+        public static int getPresentationTimeValue()
+        {
+            return presentationTimeValue;
+        }
+
+        public static String getCardsSizeValue()
+        {
+            return cardsSizeValue;
+        }
+        public static int getCardsSize()
+        {
+            switch (cardsSizeValue)
+            {
+                case "SMALL": return (int)CardsSizes.SMALL;
+                case "MEDIUM": return (int)CardsSizes.MEDIUM;
+                case "LARGE": return (int)CardsSizes.LARGE;
+            }
+            return 0;
+        }
+        public static String getSoundValue()
+        {
+            return soundValue;
+        }
+
+        public static void setLanguageValue(String lang)
+        {
+            languageValue = lang;
+        }
+
+        public static void setAnimationSpeedValue(int time)
+        {
+            animationSpeedValue = time;
+        }
+
+        public static void setPresentationTimeValue(int time)
+        {
+            presentationTimeValue = time;
+        }
+
+        public static void setCardsSizeValue(String cardSize)
+        {
+            cardsSizeValue = cardSize;
+        }
+        public static void setSoundValue(String sound)
+        {
+            soundValue = sound;
         }
     }
 }
