@@ -33,7 +33,7 @@
             this.title = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.nextButton = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.nameBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.settingsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -69,12 +69,13 @@
             this.nextButton.UseVisualStyleBackColor = false;
             this.nextButton.Click += new System.EventHandler(this.nextButtonClick);
             // 
-            // textBox2
+            // nameBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(108, 221);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(266, 20);
-            this.textBox2.TabIndex = 6;
+            this.nameBox.Location = new System.Drawing.Point(108, 221);
+            this.nameBox.Name = "nameBox";
+            this.nameBox.Size = new System.Drawing.Size(266, 20);
+            this.nameBox.TabIndex = 6;
+            this.nameBox.TextChanged += new System.EventHandler(this.nameBox_TextChanged);
             // 
             // nameLabel
             // 
@@ -107,7 +108,7 @@
             this.ClientSize = new System.Drawing.Size(457, 544);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.nameBox);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.title);
@@ -136,7 +137,7 @@
         #endregion
 
         private System.Windows.Forms.Button nextButton;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Button settingsButton;
     }

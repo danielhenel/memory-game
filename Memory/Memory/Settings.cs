@@ -13,6 +13,7 @@ namespace Memory
     public partial class Settings : Form
     {
         Form parent;
+        private static String username;
         private static String languageValue;
         private static int animationSpeedValue = 2; //default 2s
         private static int presentationTimeValue = 5; //default 120s = 2min
@@ -179,6 +180,11 @@ namespace Memory
             return soundValue;
         }
 
+        public static String getUsername()
+        {
+            return username;
+        }
+
         public static void setLanguageValue(String lang)
         {
             languageValue = lang;
@@ -201,6 +207,11 @@ namespace Memory
         public static void setSoundValue(String sound)
         {
             soundValue = sound;
+        }
+
+        public static void setUsername(String name)
+        {
+            username = name;
         }
     }
 }

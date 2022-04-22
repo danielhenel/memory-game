@@ -56,5 +56,10 @@ namespace Memory
         {
 
         }
+
+        private void nameBox_TextChanged(object sender, EventArgs e)
+        {
+            Settings.setUsername(this.nameBox.Text);
+        }
     }
 }
